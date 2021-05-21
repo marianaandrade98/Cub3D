@@ -1,4 +1,4 @@
-NAME	=	cub3d.a
+NAME	=	cub3D
 SRCS	=	main.c
 
 FLAGS	=	-Wall -Wextra -Werror
