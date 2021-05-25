@@ -38,3 +38,11 @@ void	parse_res(t_game *game, char *pline)
 	check_res(game);
 	free(pline);
 }
+
+void	parse_text(t_game *game, char *pline, int text)
+{
+	t_img	*texture;
+
+	if (text == 4 && game->sprite_txt.filename)
+		error_msg(game, "Do not write the sprite texture twice!\n");
+}
