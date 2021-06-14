@@ -1,90 +1,71 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jsousa <jsousa@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/09 12:35:08 by jsousa            #+#    #+#             */
-/*   Updated: 2021/04/22 20:54:12 by jsousa           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line.h"
 
-char	*ft_strdup(const char *src)
-{
-	char	*dest;
-	int		i;
-
-	dest = malloc(ft_strlen(src) * sizeof(char) + 1);
-	if (dest == NULL)
-		return (0);
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-char	*ft_strchr(const char *str, int c)
-{
-	if (!str)
-		return (0);
-	while (*str != (unsigned char)c)
-	{
-		if (*str == 0)
-			return (0);
-		str++;
-	}
-	return ((char *)str);
-}
-
-size_t	ft_strlen(const char *str)
+int	ft_len(const char *str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	if (!str)
+		return (0);
+	while (str[i] != '\0')
 		i++;
 	return (i);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t				i;
-	unsigned char		*memory_dest;
-	const unsigned char	*memory_src;
+	char	*d;
+	char	*s;
 
-	if (dest == 0 && src == 0)
-		return (0);
-	i = 0;
-	memory_dest = (unsigned char *)dest;
-	memory_src = (unsigned char *)src;
-	while (i < n)
+	d = (char *)dst;
+	s = (char *)src;
+	if (dst == src)
+		return (dst);
+	if (s < d)
 	{
-		memory_dest[i] = memory_src[i];
-		i++;
+		while (len--)
+			d[len] = s[len];
+		return (dst);
 	}
-	return (dest);
+	while (len--)
+		*d++ = *s++;
+	return (dst);
 }
 
-char	*ft_strjoin(const char *str1, const char *str2)
+char	*str_join(char const *s1, char const *s2)
 {
-	char	*result;
+	size_t	s1_len;
+	size_t	s2_len;
+	size_t	stot_len;
+	char	*rtn;
 
-	if (!str1 || !str2)
+	if (!s1 && !s2)
 		return (0);
-	result = (char *)malloc(ft_strlen(str1) + ft_strlen(str2) + 1);
-	if (!result)
+	s1_len = ft_len((char *)s1);
+	s2_len = ft_len((char *)s2);
+	stot_len = s1_len + s2_len + 1;
+	rtn = malloc(sizeof(char) * stot_len);
+	if (!rtn)
 		return (0);
-	else
+	ft_memmove(rtn, s1, s1_len);
+	ft_memmove(rtn + s1_len, s2, s2_len);
+	rtn[stot_len - 1] = '\0';
+	free((char *)s1);
+	return (rtn);
+}
+
+int	check_line(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
 	{
-		ft_memcpy(result, str1, ft_strlen(str1));
-		ft_memcpy(result + ft_strlen(str1), str2, ft_strlen(str2) + 1);
+		if (str[i] == '\n')
+			return (1);
+		i++;
 	}
-	return (result);
+	return (0);
 }
