@@ -20,14 +20,14 @@ void	check_left_borders(t_game *game, int x, int j)
 	int	k;
 
 	if (!(ismap(game->map[x][j])))
-		error(game, "Map", 1);
+		msg_error(game, "Map", 1);
 	if (game->map[x][j] == ' ')
 	{
 		k = 0;
 		while (game->map[x][k] == ' ')
 			k++;
 		if (game->map[x][k] != '1')
-			error(game, "Map", 1);
+			msg_error(game, "Map", 1);
 	}
 }
 

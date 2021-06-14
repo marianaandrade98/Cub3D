@@ -118,6 +118,6 @@ void	parse(t_game *game, char *argv)
 		elem = elem->next;
 		x++;
 	}
-	check_map(game, i); //todo
+	//check_map(game, i); //todo
 	close(fd);
 }

@@ -1,7 +1,13 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include "cub3d.h"
+# include "../cub3d.h"
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
+# include <stdlib.h>
+
 # define BUFFER_SIZE 50
 
 int		get_next_line(const int fd, char **line);

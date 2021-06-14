@@ -1,5 +1,13 @@
 #include "cub3d.h"
 
+int	main_loop(t_game *game)
+{
+	calc(game); //todo
+	draw(game); //todo
+	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
+	return (0);
+}
+
 void	init_game(t_game *game)
 {
 	game->flag_parse = 0;
@@ -21,7 +29,23 @@ int main(int argc, char **argv)
 	if (argc == 3)
 		need_screenshot(&game, argv[2]);
 	if (argc == 1 || argc > 3)
-		error(&game, "error arguments", 0);
+		msg_error(&game, "error arguments", 0);
 	game.mlx = mlx_init();
 	parse(&game, argv[1]); //todo
+	player_init(&game); //todo
+	init_buff1(&game); //todo
+	load_texture(&game); //todo
+	game.win = mlx_new_window(game.mlx,
+			game.width_screen, game.height_screen, "mlx");
+	game.img.img = mlx_new_image(game.mlx,
+			game.width_screen, game.height_screen);
+	game.img.data = (int *)mlx_get_data_addr(game.img.img,
+			&game.img.bpp, &game.img.size_l, &game.img.endian);
+	if (game.screenshot == 1)
+		creat_bmp(&game), //todo
+	mlx_loop_hook(game.mlx, &main_loop, &game); //todo
+	mlx_hook(game.win, 2, 1L << 0, &key_press, &game);
+	mlx_hook(game.win, 3, 1L << 1, &key_release, &game);
+	mlx_hook(game.win, 17, 0, &exit_game, &game);
+	mlx_loop(game.mlx);
 }

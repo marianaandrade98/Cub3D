@@ -9,9 +9,9 @@ void	screen_error(t_game *game)
 	if (game->height_screen <= 150)
 		game->height_screen = 200;
 	if (!game->width_screen)
-		error(game, "Width screen error", 0);
+		msg_error(game, "Width screen error", 0);
 	if (!game->height_screen)
-		error(game, "Height screen error", 0);
+		msg_error(game, "Height screen error", 0);
 	game->flag_parse += 1;
 }
 
