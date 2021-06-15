@@ -1,5 +1,12 @@
 #include "cub3d.h"
 
+/*
+**	chose side will place the textures in the right variable
+**	check map will validate the map
+**	check left and right borders will check if the map is closed
+**	check top bottom will check if the map has spaces and if its closed
+*/
+
 void	chose_side(t_game *game, int side, char *texture)
 {
     if (side == 0)
@@ -31,6 +38,41 @@ void	check_left_borders(t_game *game, int x, int j)
 	}
 }
 
+void	check_right_borders(t_game *game, int x, int j)
+{
+	int	k;
+
+	if (!(ismap(game->map[x][j])))
+		msg_error(game, "Map", 1);
+	if (game->map[x][j] == ' ')
+	{
+		k = j;
+		while (game->map[x][k] == ' ')
+			k--;
+		if (game->map[x][k] != '1')
+			msg_error(game, "Map", 1);
+	}
+}
+
+void	check_top_botton(t_game *game, int x, int j)
+{
+	if ((game->map[x][j] == ' ' && game->map[x][j - 1] == '0')
+		|| (game->map[x][j] == ' ' && game->map[x][j + 1] == '0'))
+		msg_error(game, "space in map", 0);
+	if ((game->map[x][j] == '0' && !game->map[x - 1][j])
+		|| (game->map[x][j] == '0' && game->map[x - 1][j] == ' '))
+		msg_error(game, "Map", 0);
+	else if ((game->map[x][j] == '0' && !game->map[x + 1][j])
+		|| (game->map[x][j] == '0' && game->map[x + 1][j] == ' '))
+		msg_error(game, "Map", 0);
+	if ((game->map[x][j] == '2' && !game->map[x - 1][j])
+		|| (game->map[x][j] == '2' && game->map[x - 1][j] == ' '))
+		msg_error(game, "Map", 0);
+	else if ((game->map[x][j] == '2' && !game->map[x + 1][j])
+		|| (game->map[x][j] == '2' && game->map[x + 1][j] == ' '))
+		msg_error(game, "Map", 0);
+}
+
 void	check_map(t_game *game, int size_map)
 {
     int	x;
@@ -47,7 +89,15 @@ void	check_map(t_game *game, int size_map)
         {
             if (x == check_start_map(game) || j == 0)
                 check_left_borders(game, x, j);
-            
+            else if ((x == size_map - 1)
+				|| (j + 1 == ft_strlen(game->map[x])))
+				check_right_borders(game, x, j);
+			else if(!((x == size_map - 1
+						|| j + 1 == ft_strlen(game->map[x]))
+					|| (x == check_start_map(game) || j == 0)))
+				check_top_bottom(game, x, j);
+			j++;
         }
+		x++;
     }
 }
