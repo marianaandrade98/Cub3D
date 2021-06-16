@@ -10,8 +10,8 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include "get_next_line/get_next_line.h"
-# define TEXWIDTH 64
-# define TEXHEIGHT 64
+# define WIDTH_T 64
+# define HEIGHT_T 64
 
 typedef struct s_img
 {

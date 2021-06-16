@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 	game.mlx = mlx_init();
 	parse(&game, argv[1]);
 	player_init(&game);
-	init_buff1(&game); //todo
+	init_buff1(&game);
 	load_texture(&game); //todo
 	game.win = mlx_new_window(game.mlx,
 			game.width_screen, game.height_screen, "mlx");
