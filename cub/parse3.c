@@ -25,7 +25,7 @@ void	parse_screen(t_game *game, char *line, int i)
 	while (line[i++])
 	{
 		if (ft_isalpha(line[i]))
-			msg_error(game, "caracter in color", 0);
+			msg_error(game, "Character in color", 0);
 	}
 	i = 1;
 	while (!ft_isdigit(line[i]))

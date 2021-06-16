@@ -4,7 +4,7 @@
 **	chose side will place the textures in the right variable
 **	check map will validate the map
 **	check left and right borders will check if the map is closed
-**	check top bottom will check if the map has spaces and if its closed
+**	check top botton will check if the map has spaces and if its closed
 */
 
 void	chose_side(t_game *game, int side, char *texture)

@@ -82,7 +82,7 @@ t_list	*parse_infos(t_game *game, int fd, t_list *elem)
 			parse_side(game, line, 2, 2);
 		else if (line[0] == 'E' && line[1] == 'A')
 			parse_side(game, line, 2, 3);
-		else if (line[0] == 'S' && line[1] == ' ')
+		else if (line[0] == 'S' && line[1] == ' ') //bonus
 			parse_side(game, line, 2, 4);
 		else if (line[0] == 'F' && line[1] == ' ')
 			parse_floor_ceil(game, line, 0);
