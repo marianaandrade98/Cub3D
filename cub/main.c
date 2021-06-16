@@ -31,8 +31,8 @@ int main(int argc, char **argv)
 	if (argc == 1 || argc > 3)
 		msg_error(&game, "error arguments", 0);
 	game.mlx = mlx_init();
-	parse(&game, argv[1]); //todo
-	player_init(&game); //todo
+	parse(&game, argv[1]);
+	player_init(&game);
 	init_buff1(&game); //todo
 	load_texture(&game); //todo
 	game.win = mlx_new_window(game.mlx,

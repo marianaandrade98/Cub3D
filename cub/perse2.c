@@ -25,7 +25,7 @@ void	parse_side(t_game *game, char *line, int i, int side)
 	free(texture);
 }
 
-void	parse_cell_floor_half(t_game *game, char *line, int i)
+void	parse_ceil_floor_half(t_game *game, char *line, int i)
 {
 	int	j;
 
@@ -44,7 +44,7 @@ void	parse_cell_floor_half(t_game *game, char *line, int i)
 	game->buff3[j] = '\0';
 }
 
-void	parse_floor_cell(t_game *game, char *line, int type)
+void	parse_floor_ceil(t_game *game, char *line, int type)
 {
 	int	i;
 	int	j;
@@ -118,6 +118,6 @@ void	parse(t_game *game, char *argv)
 		elem = elem->next;
 		x++;
 	}
-	//check_map(game, i); //todo
+	check_map(game, i);
 	close(fd);
 }
