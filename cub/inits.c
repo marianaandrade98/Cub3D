@@ -51,9 +51,27 @@ void    load_texture(t_game *game)
 	load_image(game, game->texture[1], game->tex_north, &img);
 	load_image(game, game->texture[2], game->tex_east, &img);
 	load_image(game, game->texture[3], game->tex_west, &img);
-	load_image(game, game->texture[4], game->tex_sprite, &img);
+	load_image(game, game->texture[4], game->tex_sprite, &img); //bonus
 	load_image(game, game->texture[5], "textures/wood.xpm", &img);
 	load_image(game, game->texture[6], "textures/mossy.xpm", &img);
+}
+
+void	draw_all(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < game->height_screen)
+	{
+		x = 0;
+		while (x < game->width_screen)
+		{
+			game->bmp_buf[y][x] = game->img.data[y * game->width_screen + x];
+			x++;
+		}
+		y++;
+	}
 }
 
 int init_buff1(t_game *game)
