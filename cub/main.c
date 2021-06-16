@@ -2,8 +2,9 @@
 
 int	main_loop(t_game *game)
 {
-	calc(game); //todo
-	draw(game); //todo
+	calc(game);
+	draw(game);
+	key_move(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	return (0);
 }
@@ -42,8 +43,8 @@ int main(int argc, char **argv)
 	game.img.data = (int *)mlx_get_data_addr(game.img.img,
 			&game.img.bpp, &game.img.size_l, &game.img.endian);
 	if (game.screenshot == 1)
-		creat_bmp(&game), //todo
-	mlx_loop_hook(game.mlx, &main_loop, &game); //todo
+		creat_bmp(&game),
+	mlx_loop_hook(game.mlx, &main_loop, &game);
 	mlx_hook(game.win, 2, 1L << 0, &key_press, &game);
 	mlx_hook(game.win, 3, 1L << 1, &key_release, &game);
 	mlx_hook(game.win, 17, 0, &exit_game, &game);
