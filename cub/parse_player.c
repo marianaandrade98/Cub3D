@@ -78,5 +78,5 @@ void    player_init(t_game *game)
         }
     }
     if (game->flag_player != 1)
-        ms_error(game, "No player or more than one player", 1);
+        msg_error(game, "No player or more than one player", 1);
 }

@@ -1,7 +1,8 @@
 NAME		= cub3d
 #BONUS		= CUB3D
-SRCS = main.c utils/utils.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
-	parse.c parse2.c utils/lst.c utils/utils2.c utils/utils3.c parse3.c utils/utils4.c
+SRCS = main.c inits.c utils/utils.c parse2.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
+	parse.c parse_player.c utils/lst.c \
+	utils/utils2.c utils/utils3.c parse3.c utils/utils4.c
 
 #main.c calcs.c calcs2.c keys.c inits.c draws.c sprite.c utils/utils.c parse2.c \
 	get_next_line/get_next_line.c get_next_line/get_next_line_utils.c parse.c parse_player.c utils/lst.c \

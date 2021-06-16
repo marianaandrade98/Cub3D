@@ -21,7 +21,7 @@ void	parse_side(t_game *game, char *line, int i, int side)
 	texture[j] = '\0';
 	if (!texture)
 		msg_error(game, "Texture name", 0);
-	choose_side(game, side, texture);
+	chose_side(game, side, texture);
 	free(texture);
 }
 
@@ -102,7 +102,7 @@ void	parse(t_game *game, char *argv)
 	t_list	*elem;
 
 	if (!ft_strstr(argv, ".cub"))
-		error(game, "Name file error", 0);
+		msg_error(game, "Name file error", 0);
 	elem = NULL;
 	x = 0;
 	fd = open(argv, O_RDONLY);

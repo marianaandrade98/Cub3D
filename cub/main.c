@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 	parse(&game, argv[1]);
 	player_init(&game);
 	init_buff1(&game);
-	load_texture(&game); //todo
+	load_texture(&game);
 	game.win = mlx_new_window(game.mlx,
 			game.width_screen, game.height_screen, "mlx");
 	game.img.img = mlx_new_image(game.mlx,

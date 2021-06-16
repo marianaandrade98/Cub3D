@@ -95,7 +95,7 @@ void	check_map(t_game *game, int size_map)
 			else if(!((x == size_map - 1
 						|| j + 1 == ft_strlen(game->map[x]))
 					|| (x == check_start_map(game) || j == 0)))
-				check_top_bottom(game, x, j);
+				check_top_botton(game, x, j);
 			j++;
         }
 		x++;
