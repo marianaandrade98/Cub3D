@@ -1,10 +1,10 @@
 R 1920 1024
 
-NO  textures/redbrick.xpm
-SO  textures/purplestone.xpm
+NO  textures/wallgrass.xpm
+SO  textures/swamp.xpm
 WE  textures/greystone.xpm
-EA  textures/mossy.xpm
-S   textures/armor.xpm
+EA  textures/woodwall.xpm
+S   textures/shrek.xpm
 
 F  0,153,0
 C  102,255,255

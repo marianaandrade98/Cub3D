@@ -80,7 +80,7 @@ void	check_map(t_game *game, int size_map)
 
 	x = 0;
 	j = 0;
-	if (game->flag_parse != 7)
+	if (game->flag_parse != 8)
 		msg_error(game, "Need more arguments in parse file", 1);
 	while (x < size_map)
 	{

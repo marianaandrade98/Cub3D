@@ -51,8 +51,9 @@ void	load_texture(t_game *game)
 	load_image(game, game->texture[1], game->tex_north, &img);
 	load_image(game, game->texture[2], game->tex_east, &img);
 	load_image(game, game->texture[3], game->tex_west, &img);
-	load_image(game, game->texture[4], "textures/wood.xpm", &img);
-	load_image(game, game->texture[5], "textures/mossy.xpm", &img);
+	load_image(game, game->texture[4], game->tex_sprite, &img);
+	load_image(game, game->texture[5], "textures/wood.xpm", &img);
+	load_image(game, game->texture[6], "textures/mossy.xpm", &img);
 }
 
 void	draw_all(t_game *game)
@@ -77,9 +78,9 @@ int	init_buff1(t_game *game)
 {
 	int	i;
 
-	game->texture = ft_calloc(6, sizeof(int *));
+	game->texture = ft_calloc(7, sizeof(int *));
 	i = -1;
-	while (++i < 6)
+	while (++i < 7)
 		game->texture[i] = ft_calloc(HEIGHT_T * WIDTH_T, sizeof(int));
 	game->zBuffer = ft_calloc(game->width_screen, sizeof(double *));
 	game->buf = ft_calloc(game->height_screen, sizeof(int *));

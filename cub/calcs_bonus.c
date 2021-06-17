@@ -29,9 +29,12 @@ t_ceil	put_ceil(t_game *game, t_floor *floor, t_ceil ceil)
 	ceil.ty = (int)(HEIGHT_T * (floor->floorY - ceil.ceilY)) & (HEIGHT_T - 1);
 	floor->floorX += floor->floorStepX;
 	floor->floorY += floor->floorStepY;
-	ceil.color = game->floor_color;
+	ceil.floorTexture = 2;
+	ceil.color = game->texture[ceil.floorTexture][WIDTH_T * ceil.ty + ceil.tx];
+	ceil.color = (ceil.color >> 1) & 8355711;
 	game->buf[floor->y][ceil.x] = ceil.color;
-	ceil.color = game->ceil_color;
+	ceil.color = game->texture[5][WIDTH_T * ceil.ty + ceil.tx];
+	ceil.color = (ceil.color >> 1) & 8355711;
 	game->buf[game->height_screen - floor->y - 1][ceil.x] = ceil.color;
 	return (ceil);
 }

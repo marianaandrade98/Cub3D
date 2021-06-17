@@ -82,11 +82,13 @@ t_list	*parse_infos(t_game *game, int fd, t_list *elem)
 			parse_side(game, line, 2, 2);
 		else if (line[0] == 'E' && line[1] == 'A')
 			parse_side(game, line, 2, 3);
+		else if (line[0] == 'S' && line[1] == ' ')
+			parse_side(game, line, 2, 4);
 		else if (line[0] == 'F' && line[1] == ' ')
 			parse_floor_ceil(game, line, 0);
 		else if (line[0] == 'C' && line[1] == ' ')
 			parse_floor_ceil(game, line, 1);
-		else if (game->flag_parse == 7)
+		else if (game->flag_parse == 8)
 			ft_lstadd_back(&elem, ft_lstnew((void *)line));
 	}
 	return (elem);

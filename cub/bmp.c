@@ -53,12 +53,11 @@ int	write_bmp_data(int file, t_game *game)
 
 void	creat_bmp(t_game *game)
 {
-	int  fd;
-	int  fz;
-	int  i;
+	int	fd;
+	int	fz;
+	int	i;
 
 	i = 0;
-
 	init_bpm_buf(game);
 	fz = 54 + (3 * (game->height_screen * game->width_screen));
 	calc(game);

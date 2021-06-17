@@ -1,50 +1,43 @@
+CC	= gcc
+MLX =  -lmlx -lm -framework OpenGL -framework AppKit
+CFLAGS = -Wall -Werror -Wextra
+RM			= rm -f
+
 NAME		= cub3d
-#BONUS		= CUB3D
+BONUS		= CUB3D
+INCLUDE		= cub3d.h
+
 SRCS = main.c calcs.c calcs2.c keys.c inits.c draws.c sprite.c utils/utils.c parse2.c \
 	get_next_line/get_next_line.c get_next_line/get_next_line_utils.c parse.c parse_player.c utils/lst.c \
 	bmp.c utils/utils2.c utils/utils3.c parse3.c utils/utils4.c
 
-#main.c calcs.c calcs2.c keys.c inits.c draws.c sprite.c utils/utils.c parse2.c \
-	get_next_line/get_next_line.c get_next_line/get_next_line_utils.c parse.c parse_player.c utils/lst.c \
+SRCS_BONUS = cub3d_bonus.c calcs_bonus.c calcs2.c keys.c inits_bonus.c draws.c sprite.c utils/utils.c parse2_bonus.c \
+	get_next_line/get_next_line.c get_next_line/get_next_line_utils.c parse_bonus.c parse_player.c utils/lst.c \
 	bmp.c utils/utils2.c utils/utils3.c parse3.c utils/utils4.c
 
-#SRCS_BONUS = cub3d_bonus.c calcs_bonus.c calcs2.c keys.c inits.c draws.c sprite.c utils/utils.c parse2.c \
-	get_next_line/get_next_line.c get_next_line/get_next_line_utils.c parse.c parse_player.c utils/lst.c \
-	bmp.c utils/utils2.c utils/utils3.c parse3.c utils/utils4.c
+OBJS = $(SRCS:.c=.o)
 
-FLAGS = -Wall -Werror -Wextra
+BONUS_OBJS = $(SRCS_BONUS:.c=.o)
 
-MLX_INC =		/usr/X11/include
-MLX_LIB =		/usr/X11/lib
-MLX_FLAGS =	-lX11 -lXext
-MLX_FLAGS += -L/usr/X11/lib /usr/X11/lib/libmlx.a -lXext -lX11 -lbsd
+$(NAME) : $(OBJS)
+	gcc  $(OBJS) $(MLX) -o $(NAME)
 
-# mac
-MLXDIR = 	./mlx
-MLX_FLAGS = 	-framework OpenGL -framework AppKit
-MLX_INC = 	$(MLXDIR)
-MLX_LIB = 	$(addprefix $(MLXDIR)/,libmlx.a)
+$(BONUS) : $(BONUS_OBJS)
+	gcc $(BONUS_OBJS) $(MLX) -o $(BONUS)
 
+.c.o:
+	gcc $(CFLAGS) -c $< -o $(<:.c=.o)
 
-all:		$(NAME) $(MLX_LIB)
+all : $(NAME)
 
-$(NAME):	$(SRCS) get_next_line/get_next_line.h cub3d.h $(MLX_LIB)
-			gcc $(FLAGS) -I $(MLX_INC) -g $(MLX_LIB) $(SRCS) -lm -o $(NAME) $(MLX_FLAGS)
+clean :
+	rm -rf $(OBJS) $(BONUS_OBJS)
 
-$(MLX_LIB):
-			@make -C $(MLXDIR)
+fclean : clean
+	rm -rf $(NAME)
+	rm -rf $(BONUS)
+	rm -rf screenshot.bmp
 
-#bonus:		$(BONUS) $(MLX_LIB)
-#$(BONUS):	$(SRCS_BONUS) get_next_line/get_next_line.h cub3d.h $(MLX_LIB)
-#			gcc $(FLAGS) -I $(MLX_INC) -g $(MLX_LIB) $(SRCS) -lm -o $(BONUS) $(MLX_FLAGS)
+re : fclean all
 
-
-clean:
-			rm -rf $(SRCS:.c=.o)
-			make -C $(MLXDIR) clean
-
-fclean:		clean
-			rm -f $(NAME) cub3d.bmp
-			make -C $(MLXDIR) fclean
-
-re:			fclean all
+bonus : $(BONUS)
