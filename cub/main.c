@@ -9,6 +9,18 @@ int	main_loop(t_game *game)
 	return (0);
 }
 
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		((char *)s)[i] = 0;
+		i++;
+	}
+}
+
 void	init_game(t_game *game)
 {
 	game->flag_parse = 0;
@@ -26,11 +38,12 @@ int main(int argc, char **argv)
 {
 	t_game	game;
 
+	ft_bzero(&game, sizeof(game));
 	init_game(&game);
 	if (argc == 3)
 		need_screenshot(&game, argv[2]);
 	if (argc == 1 || argc > 3)
-		msg_error(&game, "error arguments", 0);
+		msg_error(&game, "Wrong number of arguments", 0);
 	game.mlx = mlx_init();
 	parse(&game, argv[1]);
 	player_init(&game);
@@ -43,7 +56,7 @@ int main(int argc, char **argv)
 	game.img.data = (int *)mlx_get_data_addr(game.img.img,
 			&game.img.bpp, &game.img.size_l, &game.img.endian);
 	if (game.screenshot == 1)
-		creat_bmp(&game),
+		creat_bmp(&game);
 	mlx_loop_hook(game.mlx, &main_loop, &game);
 	mlx_hook(game.win, 2, 1L << 0, &key_press, &game);
 	mlx_hook(game.win, 3, 1L << 1, &key_release, &game);

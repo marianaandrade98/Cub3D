@@ -74,6 +74,7 @@ void	wall_calc(t_wall *wall, t_game *game, t_textures *textures)
     t_ceil  ceil;
 
     floor.y = 0;
+	printf("%d\n %d\n", game->width_screen , game->height_screen);
     while (floor.y < game->height_screen)
     {
         floor = put_floor(floor, game);
@@ -98,20 +99,19 @@ void	calc(t_game *game)
 {
     t_wall		wall;
 	t_textures	textures;
-	int			i;
-	int			j;
-
+//	int			i;
+//	int			j;
 	wall_calc(&wall, game, &textures);
-    i = 0;
-    while (i < game->map_size)
-    {
-        j = 0;
-        while (j < ft_strlen(game->map[i]))
-        {
-            if (game->map[i][j] == '2') //bonus
-                draw_sprite(game,i, j);
-            j++;
-        }
-        i++;
-    }
+    // i = 0;
+    // while (i < game->map_size)
+    // {
+    //     j = 0;
+    //     while (j < ft_strlen(game->map[i]))
+    //     {
+    //         if (game->map[i][j] == '2') //bonus
+    //             draw_sprite(game,i, j);
+    //         j++;
+    //     }
+    //     i++;
+    // }
 }

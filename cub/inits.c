@@ -86,6 +86,6 @@ int init_buff1(t_game *game)
 	game->buf = ft_calloc(game->height_screen, sizeof(int *));
     i = -1;
     while (++i < game->height_screen)
-        game->buf[1] = ft_calloc(game->width_screen, sizeof(int *));
+        game->buf[i] = ft_calloc(game->width_screen, sizeof(int *));
     return (0);
 }
