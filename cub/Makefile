@@ -29,7 +29,7 @@ MLX_LIB = 	$(addprefix $(MLXDIR)/,libmlx.a)
 all:		$(NAME) $(MLX_LIB)
 
 $(NAME):	$(SRCS) get_next_line/get_next_line.h cub3d.h $(MLX_LIB)
-			gcc -I $(MLX_INC) -g $(MLX_LIB) $(SRCS) -lm -o $(NAME) $(MLX_FLAGS)
+			gcc $(FLAGS) -I $(MLX_INC) -g $(MLX_LIB) $(SRCS) -lm -o $(NAME) $(MLX_FLAGS)
 
 $(MLX_LIB):
 			@make -C $(MLXDIR)
