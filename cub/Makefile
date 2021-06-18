@@ -9,7 +9,7 @@ INCLUDE		= cub3d.h
 
 SRCS = main.c calcs.c calcs2.c keys.c inits.c draws.c sprite.c utils/utils.c parse2.c \
 	get_next_line/get_next_line.c get_next_line/get_next_line_utils.c parse.c parse_player.c utils/lst.c \
-	bmp.c utils/utils2.c utils/utils3.c parse3.c utils/utils4.c
+	utils/utils2.c utils/utils3.c parse3.c utils/utils4.c
 
 SRCS_BONUS = cub3d_bonus.c calcs_bonus.c calcs2.c keys.c inits_bonus.c draws.c sprite.c utils/utils.c parse2_bonus.c \
 	get_next_line/get_next_line.c get_next_line/get_next_line_utils.c parse_bonus.c parse_player.c utils/lst.c \

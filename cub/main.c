@@ -27,9 +27,7 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	init_game(&game);
-	if (argc == 3)
-		need_screenshot(&game, argv[2]);
-	if (argc == 1 || argc > 3)
+	if (argc == 1 || argc > 2)
 		msg_error(&game, "Wrong number of arguments", 0);
 	game.mlx = mlx_init();
 	parse(&game, argv[1]);
@@ -42,8 +40,6 @@ int	main(int argc, char **argv)
 			game.width_screen, game.height_screen);
 	game.img.data = (int *)mlx_get_data_addr(game.img.img,
 			&game.img.bpp, &game.img.size_l, &game.img.endian);
-	if (game.screenshot == 1)
-		creat_bmp(&game);
 	mlx_loop_hook(game.mlx, &main_loop, &game);
 	mlx_hook(game.win, 2, 1L << 0, &key_press, &game);
 	mlx_hook(game.win, 3, 1L << 1, &key_release, &game);
