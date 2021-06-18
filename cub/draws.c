@@ -36,13 +36,13 @@ void	draw_rectangles(t_game *game)
 		while (j < ft_strlen(game->map[i]))
 		{
 			if (game->map[i][j] == '1')
-				draw_rectangle(game, j, i, 0xFFFFFF);
+				draw_rectangle(game, j, i, 0x000000);
 			else if (game->map[i][j] == '0')
-				draw_rectangle(game, j, i, 0x33D1FF);
+				draw_rectangle(game, j, i, 0xA0A0A0);
 			else if (game->map[i][j] == '2')
-				draw_rectangle(game, j, i, 0xFA8800);
+				draw_rectangle(game, j, i, 0x80FF00);
 			draw_rectangle(game, game->posY + game->dirY * game->moveSpeed,
-				game->posX + game->dirX * game->moveSpeed, 0xFF5733);
+				game->posX + game->dirX * game->moveSpeed, 0xFF9999);
 			j++;
 		}
 		i++;

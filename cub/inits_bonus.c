@@ -52,7 +52,7 @@ void	load_texture(t_game *game)
 	load_image(game, game->texture[2], game->tex_east, &img);
 	load_image(game, game->texture[3], game->tex_west, &img);
 	load_image(game, game->texture[4], game->tex_sprite, &img);
-	load_image(game, game->texture[5], "textures/wood.xpm", &img);
+	load_image(game, game->texture[5], "textures/sky.xpm", &img);
 	load_image(game, game->texture[6], "textures/mossy.xpm", &img);
 }
 

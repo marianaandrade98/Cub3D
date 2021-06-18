@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	if (argc == 3)
 		need_screenshot(&game, argv[2]);
 	if (argc == 1 || argc > 3)
-		msg_error(&game, "error arguments", 0);
+		msg_error(&game, "Wrong number of arguments", 0);
 	game.mlx = mlx_init();
 	parse(&game, argv[1]);
 	player_init(&game);
